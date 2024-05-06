@@ -1,0 +1,19 @@
+.video-chat-container {
+  background-color: black;
+  position: relative;
+  border-radius: 8px;
+  width: 70%;
+  height: 80%;
+  border: 3px solid white;
+
+  .small-container {
+    background-color: black;
+    position: absolute;
+    width: 15%;
+    height: 15%;
+    border: 3px solid white;
+    top: 4%;
+    right: 4%;
+    border-radius: 8px;
+  }
+}

@@ -1,0 +1,32 @@
+.home-page {
+  background-color: black;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 40px;
+
+  .call-section {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    gap: 8px;
+
+    input {
+      height: 24px;
+      border-radius: 4px;
+      padding: 4px;
+    }
+
+    button {
+      height: 36px;
+      border-radius: 4px;
+      padding: 4px;
+      color: white;
+      background-color: green;
+      border: 0;
+      cursor: pointer;
+    }
+  }
+}
