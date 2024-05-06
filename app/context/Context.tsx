@@ -37,7 +37,7 @@ type Rooms =
 
 
 const ContextProvider = ({ children }: { children: React.ReactNode }) => {
-  const [localId, setLocalId] = React.useState<string | null>(window !== undefined ? localStorage.getItem("id") : "")
+  const [localId, setLocalId] = React.useState<string | null>(null)
   const [rooms, setRooms] = React.useState<Array<Rooms>>([])
   const [stream, setStream] = React.useState<MediaStream>()
   const [isAnswer, setIsAnswer] = React.useState<boolean>(false)
@@ -137,10 +137,11 @@ const ContextProvider = ({ children }: { children: React.ReactNode }) => {
   }
 
   React.useEffect(() => {
-    if (!localId) {
+    console.log(localId, localStorage.getItem("id"))
+    if (!localStorage.getItem("id") && localId !== localStorage.getItem("id")) {
       const id = v4()
       setLocalId(id)
-      window !== undefined && window.localStorage.setItem("id", id)
+      localStorage.setItem("id", id)
     }
   }, [localId])
 

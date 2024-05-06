@@ -10,21 +10,23 @@ import Peer from 'simple-peer';
 export default function Home() {
   const [callId, setCallId] = React.useState<string>("")
   const [callName, setCallName] = React.useState<string>("")
-  const [hasName, setHasName] = React.useState<string | null>(window !== undefined ?  window.localStorage.getItem('name') : "" )
+  const [hasName, setHasName] = React.useState<string | null>(null)
   const { socket, rooms, stream, connectionVideo, callUser: callUserContext } = useContext(SocketContext)
-  const myCalls = rooms.filter(room => room.calledId === (window !== undefined ? window.localStorage.getItem("id") : ""))
+  const myCalls = rooms.filter(room => room.calledId === localStorage.getItem("id"))
+
+  React.useEffect(() => {
+    setHasName(localStorage.getItem("name"))
+  }, [])
 
 
   const saveName = (name: string) => {
     setHasName(name)
-    if(window !== undefined) {
-      window.localStorage.setItem("name", name)
-    }
+    localStorage.setItem("name", name)
   }
 
   const callUser = () => {
     const callUserData = {
-      userName: window !== undefined ?  window.localStorage.getItem('name') : "", userId: (window !== undefined ? window.localStorage.getItem("id") : ""), calledId: callId
+      userName: localStorage.getItem("name"), userId: localStorage.getItem("id"), calledId: callId
     }
 
     callUserContext(callUserData)
