@@ -138,7 +138,7 @@ const ContextProvider = ({ children }: { children: React.ReactNode }) => {
 
   React.useEffect(() => {
     console.log(localId, localStorage.getItem("id"))
-    if (!localStorage.getItem("id") && localId !== localStorage.getItem("id")) {
+    if (!localStorage.getItem("id")) {
       const id = v4()
       setLocalId(id)
       localStorage.setItem("id", id)
