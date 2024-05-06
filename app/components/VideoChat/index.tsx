@@ -4,17 +4,18 @@ import VideoPlayer from './VideoPlayer'
 
 const VideoChat = () => {
   const { myStream, userStream } = useContext(SocketContext)
+  const [focus, setFocus] = React.useState<"me" | "user">("user")
 
   return (
     <div className='video-chat-container' >
       {
-        myStream &&
-        <VideoPlayer stream={myStream} />
+        myStream && userStream &&
+        <VideoPlayer stream={focus === "user" ? userStream : myStream } />
       }
-      <div className='small-container' >
+      <div onClick={() => focus === "user" ? setFocus("me") : setFocus("user")} className='small-container' >
         {
-          userStream &&
-          <VideoPlayer stream={userStream} />
+          userStream && myStream &&
+          <VideoPlayer stream={focus === "me" ? userStream : myStream } />
         }
       </div>
     </div>
