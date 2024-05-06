@@ -13,8 +13,8 @@ const RoomCard = (props: RoomCard) => {
     const data = {
       roomSignal: props.creatorSignal,
       roomId: props.roomId,
-      userId: window.localStorage.getItem("id"),
-      userName: window.localStorage.getItem("name")
+      userId: localStorage.getItem("id"),
+      userName: localStorage.getItem("name")
     }
 
     joinRoom(data)

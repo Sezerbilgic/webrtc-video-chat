@@ -2,20 +2,20 @@
 import React from 'react'
 
 const Header = () => {
-  const [id, setId] = React.useState<string | null>(window.localStorage.getItem("id"))
-  const [name, setName] = React.useState<string | null>(window.localStorage.getItem("name"))
+  const [id, setId] = React.useState<string | null>(localStorage.getItem("id"))
+  const [name, setName] = React.useState<string | null>(localStorage.getItem("name"))
 
   React.useEffect(() => {
-    if (window.localStorage.getItem("id") !== id) {
-      setId(window.localStorage.getItem("id"))
+    if (localStorage.getItem("id") !== id) {
+      setId(localStorage.getItem("id"))
     }
-  }, [window.localStorage.getItem("id")])
+  }, [localStorage.getItem("id")])
 
   React.useEffect(() => {
-    if (window.localStorage.getItem("name") !== name) {
-      setName(window.localStorage.getItem("name"))
+    if (localStorage.getItem("name") !== name) {
+      setName(localStorage.getItem("name"))
     }
-  }, [window.localStorage.getItem("name")])
+  }, [localStorage.getItem("name")])
 
   return (
     <div className='header'>
