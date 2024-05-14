@@ -3,9 +3,10 @@ import React, { useRef } from 'react'
 
 type VideoPlayerProps = {
   stream: MediaStream
+  muted?: boolean
 }
 
-const VideoPlayer = ({stream}: VideoPlayerProps) => {
+const VideoPlayer = ({stream, muted = false}: VideoPlayerProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   React.useEffect(() => {
@@ -15,10 +16,12 @@ const VideoPlayer = ({stream}: VideoPlayerProps) => {
   return (
     <div className='video-player'>
       <video
-        style={{ width: "100%" }}
+        style={{ width: "100%", pointerEvents: "none" }}
         ref={videoRef}
         autoPlay
         playsInline
+        controls={false}
+        muted={muted}
       />
     </div>
   )

@@ -10,12 +10,12 @@ const VideoChat = () => {
     <div className='video-chat-container' >
       {
         myStream && userStream &&
-        <VideoPlayer stream={focus === "user" ? userStream : myStream } />
+        <VideoPlayer muted={focus === "me"}  stream={focus === "user" ? userStream : myStream } />
       }
       <div onClick={() => focus === "user" ? setFocus("me") : setFocus("user")} className='small-container' >
         {
           userStream && myStream &&
-          <VideoPlayer stream={focus === "me" ? userStream : myStream } />
+          <VideoPlayer muted={focus === "me"} stream={focus === "me" ? userStream : myStream } />
         }
       </div>
     </div>

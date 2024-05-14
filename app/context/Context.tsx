@@ -146,7 +146,7 @@ const ContextProvider = ({ children }: { children: React.ReactNode }) => {
   }, [localId])
 
   React.useEffect(() => {
-
+ 
 
     socket.on("room-added", getRooms)
     socket.on("room-created", enterRoom)
